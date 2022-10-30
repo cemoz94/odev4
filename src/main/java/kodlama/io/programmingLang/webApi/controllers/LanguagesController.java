@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import kodlama.io.programmingLang.business.abstracts.LanguageService;
 import kodlama.io.programmingLang.entities.concretes.Language;
 
@@ -26,19 +28,19 @@ public class LanguagesController {
 		return languageService.getAll();
 	}
 	
-	@GetMapping("/add")
-	public Language add(Language language) throws Exception {
+	@PostMapping("/add")
+	public Language add(@RequestBody Language language) throws Exception {
 		return languageService.add(language);
 	}
 	
-	@GetMapping("/delete")
-	public void delete(int id) throws Exception{
-		languageService.delete(id);
+	@PostMapping("/delete")
+	public void delete(@RequestBody Language language) throws Exception{
+		languageService.delete(language);
 	}
 	
-	@GetMapping("/update")
-	public void update(Language language, int id) throws Exception{
-		languageService.update(language, id);
+	@PostMapping("/update")
+	public void update(@RequestBody Language language) throws Exception{
+		languageService.update(language);
 	}
 	
 	@GetMapping("/getById")

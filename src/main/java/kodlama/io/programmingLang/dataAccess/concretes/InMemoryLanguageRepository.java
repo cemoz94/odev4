@@ -1,7 +1,6 @@
 package kodlama.io.programmingLang.dataAccess.concretes;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -32,25 +31,31 @@ public class InMemoryLanguageRepository implements LanguageRepository{
 	@Override
 	public Language add(Language language) {
 		languages.add(language);
-		return getById(language.getId());
+		return language;
 	}
 
 	@Override
-	public void delete(int id) {
-		languages.remove(id);
+	public void delete(Language language) {
+		languages.removeIf(lang -> lang.getId() == language.getId());
 		
 	}
 
 	@Override
 	public Language getById(int id) {
-		languages.get(id);
+		for (Language language1 : languages) {
+			if (language1.getId() == id);
+			return language1;
+		}
 		return null;
 	}
 
 	@Override
-	public void update(Language language, int id) {
-		Language language1 = getById(id);
-		language1.setName(language.getName());
+	public void update(Language language) {
+		for (Language language1 : languages) {
+			if (language1.getId() == language.getId()) {
+				language1.setName(language.getName());
+			}
+		}
 		
 	}
 

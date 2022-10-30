@@ -7,7 +7,7 @@ import kodlama.io.programmingLang.entities.concretes.Language;
 public interface LanguageRepository {
 	List<Language> getAll();
 	public Language add(Language language);
-	public void delete(int id);
-	void update(Language language, int id);
+	public void delete(Language language);
+	void update(Language language);
 	public Language getById(int id);
 }
